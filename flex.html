@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #wrap {
+
+        }
+        header {
+            height: 45px;
+            background: #33353F;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>헤더</h1>
+        </header>
+
+        <div id="con_wrap">
+            <div id="con_up">
+                <section class="s1-1">위-왼쪽</section>    
+                <div class="con_up_right">
+                    <section class="s1-2">위-오른쪽1</section>
+                    <section class="s1-3">위-오른쪽2 </section>
+                </div>    
+            </div>
+            <div id="con_down">
+                <section class="s2-1">아래-왼쪽</section>   
+                <section class="s2-2">아래-오른쪽</section>   
+            </div>
+        </div>
+        <style>
+            #con_wrap {
+                display: flex;
+                flex-direction: column;
+                /* height: 600px; */
+            }
+                #con_up {
+                    flex: 2;
+                    display: flex;
+                }
+                    .s1-1 {
+                        flex: 1;
+                        background: #4ab8bc;
+                    }
+                    .con_up_right {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                    }   
+                        .s1-2 {
+                            flex: 1;
+                            /* height: 50%; */
+                            background: #589dd2;
+                        }
+                        .s1-3 {
+                            flex: 1;
+                            /* height: 50%; */
+                            background: #ff912f;
+                        }
+                #con_down {
+                    flex: 1;
+                    display: flex;
+                }
+                    .s2-1 {
+                        flex: 1;
+                        background: #589dd2;
+                    }
+                    .s2-2 {
+                        flex: 1;
+                        background: #8dca35;
+                    }
+        </style>
+
+        <footer style="height: 100px; background: #33353F;  position:fixed; bottom:0; width: 100%;">
+            푸터
+        </footer>
+        <!-- <script>
+            //#con_wrap의 세로길이 구하기
+            var footerTop = $('footer').offset().top;  
+            //화면 제일 위에서부터 푸터까지의 거리
+            var con_wrapTop = $('#con_wrap').offset().top; 
+
+            console.log(con_wrapTop);
+
+            //#con_wrap의 높이
+            // footerTop - con_wrapTop
+
+            var con_wrapHeight = footerTop - con_wrapTop;
+            console.log(con_wrapHeight);
+
+            //가로길이 지정
+            $('#con_wrap').css({height:con_wrapHeight});
+
+            //화면 크기를 조절했을 때 #con_wrap의 세로 길이 다시 지정    
+            $(window).resize(function(){
+                var footerTop = $('footer').offset().top; 
+                var con_wrapHeight = footerTop - con_wrapTop;
+                $('#con_wrap').css( {height:con_wrapHeight});
+            });    
+        </script> -->
+        <script>
+
+            // 화면의 높이를 재는 함수 .offset()
+    
+            //#con_wrap 세로 길이 구하기
+            var footerTop = $('footer').offset().top; // 화면 제일 위에서부터 푸터까지의 거리
+            // $('footer') 제이쿼리에서 선택자를 가져오는 방법
+            var con_wrapTop = $('#con_wrap').offset().top;
+    
+            // console.log(con_wrapTop);
+    
+            //#con_wrap의 높이
+            var con_wrapHeight = footerTop - con_wrapTop;
+            console.log(con_wrapHeight);
+    
+            $('#con_wrap').css( {height:con_wrapHeight}); //가로 길이 지정
+    
+            //화면 크기를 조절했을 때 #con_wrap의 세로 길이를 다시 지정
+            $(window).resize(function(){
+                var footerTop = $('footer').offset().top; 
+                var con_wrapHeight = footerTop - con_wrapTop;
+                $('#con_wrap').css( {height:con_wrapHeight});
+            }); //.css() css 의 속성을 그래도 쓸 수 있음
+    
+            //resize 제이쿼리 매소드이기 때문에 () 있어야 실행됨
+        </script>
+    </div>
+</body>
+</html>
